@@ -28,8 +28,8 @@ The file is a CSV text file (ASCII), the values are separated by white space.
 
 |  Variable | Column  | Class  | Explanation  |
 |---|---|---|---|
-|subject|1|factor|Activity label|
-|activity|2|factor|ID of subject|
+|subject|1|factor|ID of subject|
+|activity|2|factor|Activity label|
 |tBodyAcc.mean.X|3|numeric|Measurement variable|
 |tBodyAcc.mean.Y|4|numeric|Measurement variable|
 |tBodyAcc.mean.Z|5|numeric|Measurement variable|
