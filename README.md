@@ -2,38 +2,45 @@
 
 ## Summary
 
-This project is part of the *Peer-graded Assignment: Getting and Cleaning Data Course Project*.
-
-It contains one main R script to create a clean data set from the 'UCI HAR Dataset' 
+This project allows creating a "clean" data set from the 'UCI HAR Dataset' 
 available at:
 
 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
-There is one main R script for creating a clean data set file named "clean_dataset.txt".
-
-Additionally, an aggregated data set named "tidy_dataset.txt" is created. It contains the average 
-of each variable for each activity and each subject.
+It merges different subsets of this data into one single transformed data 
+set --- named "*clean*" data set --- in order to allow performing data analysis 
+tasks more easily. As an example, a derived data set --- named "*tidy*" data 
+set) --- is created which contains the average values of each measurement 
+variable for each activity and each subject.
 
 ## Run
 
-Execute the R script:
+Before executing the script please make sure the data set is unzipped in the 
+working directory and set the working directory using the 'setwd' R command).
+
+Then execute the R script in the working directory where the 'UCI HAR Dataset' 
+folder is located:
 
     run_analysis.R
 
-which will create the result data files "clean_dataset.txt" and "tidy_dataset" in the working directory. 
+The script will create the result data files "clean_dataset.txt" and 
+"tidy_dataset.txt" in the working directory. 
 
-The script executes the following steps:
+More concretely, the script executes the following steps:
 
-1. Load the individual data files of the training and test sets and merge them into one data table
-2. Filter the data table to select only mean and standard deviation columns
-3. Load labels and levels to the activity column and convert it into a factor variable
-4. Assign cleaned feature strings as column names for the feature measurements
-5. Merge test and training subsets into one final cleaned data set
-6. Create another data set with average of each variable for each activity and each subject
+1. Load the individual data files of the training and test sets and merge them 
+   into one data table.
+2. Filter the data table to select only mean and standard deviation columns.
+3. Load labels and levels of the activity column and convert the variable into a 
+   factor variable.
+4. Assign cleaned feature strings as column names for the feature measurements.
+5. Merge test and training subsets into one final cleaned data set.
+6. Create another derived data set with average values of each measurement 
+   variable for each activity and each subject.
 
 ## Dependencies
 
-The script uses the following libraries:
+The script uses the following R libraries which need to be installed:
 
 * data.table
 * dplyr
@@ -43,7 +50,8 @@ The script uses the following libraries:
 
 **load.data.subset**
 
-Load subset of the full 'UCI HAR Dataset'.
+The function loads a subset of the full 'UCI HAR Dataset' (i.e. "train" and 
+"test" subsets).
 
 * The function loads a subset of the full data set. The steps are:
 ** load features table selecting only the std/mean columns 
@@ -58,14 +66,29 @@ Load subset of the full 'UCI HAR Dataset'.
 
 Function to merge the two data tables created for the 'train' and 'test' subsets.
 
+* Parameters: requires indicating the name of the data subset (i.e. 'train' or 'test') 
+  as parameter.
+* Returns: clean data table object.
+
 **create.clean.dataset.file**
 
 Function to create the data set file based on the clean data set table.
+
+* Parameters: clean data set table object, clean data set file name.
+* Returns: none.
+* Output: clean data set file "clean_dataset.txt"
 
 **create.tidy.dataset**
 
 Function to create the tidy data set based on the clean data set.
 
+* Parameters: requires the clean dataset table object.
+* Returns: tidy data table object.
+
 **create.tidy.dataset.file**
 
 Function to create the tidy data set file based on the clean data set table.
+
+* Parameters: tidy data set table object, tidy data set file name.
+* Returns: none.
+* Output: tidy data set file "tidy_dataset.txt" 

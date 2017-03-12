@@ -22,7 +22,6 @@ library(data.table)
 library(dplyr)
 library(reshape2)
 
-# setwd(".")
 # set the data set directory (default: "UCI HAR Dataset", trailing slash required)
 dataset.dir <- "./UCI HAR Dataset/"
 
